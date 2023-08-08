@@ -1,0 +1,64 @@
+<section class="form-01-main position-relative">
+    <div class="form-cover">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-sub-main mt-5">
+                        <div class="_main_head_as">
+                            <img src="/assets/images/admin.png">
+                        </div>
+                        {{#if error}}
+                            <div class="alert alert-danger mb-3">{{error}}</div>
+                        {{/if}}
+                        <form action="/auth/register/new" method="post" autocomplete="off">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="text-start" for="username">Login</label>
+                                        <input
+                                            id="username"
+                                            name="username"
+                                            class="form-control form-input fs-6 mb-3"
+                                            type="text"
+                                            placeholder="Foydalanuvchi nomi"
+                                            value="{{sessionData.username}}"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="text-start" for="password">Parol yarating</label>
+                                        <input
+                                            id="password"
+                                            name="password"
+                                            class="form-control form-input fs-6 mb-3"
+                                            type="password"
+                                            placeholder="Parol"
+                                            value=""
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="text-start" for="password2">Parolni qayta kiriting</label>
+                                        <input
+                                            id="password2"
+                                            name="password2"
+                                            class="form-control form-input fs-6 mb-3"
+                                            type="password"
+                                            placeholder="Parol"
+                                            value=""
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn border-button mt-4">Ro'yxatdan o'tish</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

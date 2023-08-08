@@ -1,0 +1,139 @@
+/* Set root variables */
+:root {
+	--default: #a4c639;
+	--default-dark: rgb(41, 137, 16);
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.form-control {
+	transition: all ease-in-out 0.5s
+}
+.form-control:focus,
+.form-focus {
+	border-color: var(--default);
+	box-shadow: 0 0 0 0.25rem #bdf60368;
+}
+.form-error {
+	border-color: rgb(255, 36, 36);
+	box-shadow: 0 0 0 0.25rem #f6030368;
+}
+/* /Set root variables */
+
+/* colors */
+.bg-default {
+	background: var(--default)!important;
+}
+.bg-default-dark {
+	background: var(--default-dark)!important;
+}
+.text-default {
+	color: var(--default)!important;
+}
+.text-default-dark {
+	color: var(--default-dark)!important;
+}
+/* colors */
+
+/* Button components */
+a.filled-button,
+button.filled-button {
+	background-color: var(--default);
+	color: #fff;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 12px 30px;
+	border-radius: 30px;
+	display: inline-block;
+	transition: all 0.3s;
+}
+
+a.filled-button:hover,
+button.filled-button:hover {
+	background-color: #fff;
+	color: var(--default);
+}
+
+a.border-button,
+button.border-button {
+	background-color: transparent;
+	color: #fff;
+	border: 2px solid #fff;
+	font-size: 1rem;
+	text-transform: uppercase;
+	font-weight: 700;
+	padding: 10px 28px;
+	border-radius: 30px;
+	display: inline-block;
+	transition: all 0.3s;
+}
+
+a.border-button:hover,
+button.border-button:hover {
+	background-color: #fff;
+	color: var(--default);
+}
+/* /Button components */
+
+/* ------------------ */
+
+/* Form component */
+input.form-input {
+	border-radius: 20px;
+	height: 40px;
+	line-height: 40px;
+	display: inline-block;
+	padding: 0px 15px;
+	color: #6a6a6a;
+	font-size: 13px;
+	text-transform: none;
+	box-shadow: none;
+	border: none;
+	margin-bottom: 35px;
+}
+
+input.form-input:focus {
+	outline: none;
+	box-shadow: none;
+	border: none;
+}
+
+textarea.form-textarea {
+	border-radius: 20px;
+	height: 120px;
+	max-height: 200px;
+	min-height: 120px;
+	display: inline-block;
+	padding: 15px;
+	color: #6a6a6a;
+	font-size: 13px;
+	text-transform: none;
+	box-shadow: none;
+	border: none;
+	margin-bottom: 35px;
+}
+
+textarea.form-textarea:focus {
+	outline: none;
+	box-shadow: none;
+	border: none;
+}
+
+input.form-input::-webkit-input-placeholder,
+textarea.form-textarea::-webkit-input-placeholder { /* Edge */
+  color: #aaa;
+}
+input.form-input :-ms-input-placeholder,
+textarea.form-textarea :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #aaa;
+}
+input.form-input ::placeholder,
+textarea.form-textarea ::placeholder {
+  color: #aaa;
+}
+/* /Form component */
+
+/* ------------------ */
+

@@ -1,0 +1,28 @@
+<div class="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2 class="fs-1">Biz haqimizda <em>talabalar</em> nima deydi?</h2>
+                    <span class="fs-6">O'quvchilarimizning maktab haqidagi fikrlari</span>
+                </div>
+            </div>
+            {{#if testimonials}}
+            <div class="col-md-12">
+                <div class="owl-testimonials owl-carousel">
+                    {{#each testimonials}}
+                    <div class="testimonial-item">
+                        <div class="inner-content">
+                            <h4 class="fs-4">{{this.name}}</h4>
+                            <span class="fs-5 my-3">{{this.classes}}</span>
+                            <p class=" text-style">“{{this.comment}}”</p>
+                        </div>
+                        <img src="{{this.image}}" alt="User image">
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+</div>

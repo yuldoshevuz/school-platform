@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+{{>index/head}}
+
+<body id="body" style="overflow-y: hidden;">
+    {{>index/loader}}
+
+    {{>index/sub-header}}
+
+    {{>index/header}}
+    
+    {{#unless isHome}}
+    {{>index/page-header}}
+    {{/unless}}
+
+    {{{body}}}
+    
+    {{>index/footer}}
+
+    {{>index/sub-footer}}
+    
+    {{>index/scripts}}
+
+</body>
+</html>

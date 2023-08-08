@@ -1,0 +1,32 @@
+{
+  "name": "school-website",
+  "version": "1.0.0",
+  "description": "19 th school website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "O'lmasjon",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "connect-mongodb-session": "^3.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.0",
+    "express-session": "^1.17.3",
+    "mongoose": "^7.4.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.4",
+    "sharp": "^0.32.4",
+    "sharp-multer": "^0.3.0",
+    "uid-safe": "^2.1.5",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

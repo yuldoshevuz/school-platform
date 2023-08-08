@@ -1,0 +1,37 @@
+<div class="content-wrapper overflow-auto">
+    {{>dashboard/content-header}}
+    
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row mb-5">
+                {{#if news}}
+                {{#each news}}
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="img-fluid" src="{{this.image_url}}" alt="{{this.title}}">
+                            <div class="down-content">
+                                <p class="fs-6 mt-3 text-secondary"><i class="fa-solid fa-calendar-days"></i> {{parseDate this.date}}</p>
+                                <h4 class="my-3">{{this.title}}</h4>
+                                <p class="text-style fst-italic text-secondary">{{shortArticle this.description }}</p>
+                            </div>
+                        </div>
+                        <div class="card-footer py-3">
+                            <form action="/dashboard/blog/delete/{{this._id}}" method="post">
+                                <div class="btn-group btn-group-sm" role="group">
+                                    <a href="/dashboard/blog/view/{{this._id}}" class="btn btn-outline-secondary">Ko'proq o'qish</a>
+                                    <a href="/dashboard/blog/edit/{{this._id}}" class="btn btn-outline-success">Tahrirlash</a>
+                                    <button type="submit" class="btn btn-outline-danger">O'chirish</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}    
+                {{else}}
+                    <div class="alert alert-success">Hozircha yangiliklar mavjud emas</div>
+                {{/if}}
+            </div>
+        </div>
+    </section>
+</div>

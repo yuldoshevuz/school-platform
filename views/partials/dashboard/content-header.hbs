@@ -1,0 +1,37 @@
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-10">
+                <h1>{{title}}</h1>
+            </div>
+            {{#if isBlogPage}}
+            <div class="col-sm-2 mt-3 mt-sm-0 text-start text-sm-end">
+                <a href="/dashboard/blog/add" class="btn bg-default text-white">Qo'shish</a>
+            </div>
+            {{/if}}
+
+            {{#if isAdminsPage}}
+               {{#if thisUser.super_admin}}
+                    <div class="col-sm-2 mt-3 mt-sm-0 text-start text-sm-end">
+                        <form action="/dashboard/admins/new" method="post">
+                            <button class="btn bg-default text-white" type="submit">Admin qo'shish</button>
+                        </form>
+                    </div>
+                    {{else}}
+                    <div class="col-sm-2 mt-3 mt-sm-0 text-start text-sm-end">
+                        <button class="btn bg-default text-white" disabled=>Admin qo'shish</button>
+                    </div>
+               {{/if}}
+            {{/if}}
+
+            {{#if isSecurityPage}}
+                <div class="col-sm-2 mt-3 mt-sm-0 text-start text-sm-end">
+                    <form action="/auth/logout" method="get" class="m-0 mb-2">
+                        <button type="submit" class="btn btn-danger w-100">Chiqish</button>
+                    </form>
+                    <a href="/dashboard/security/changePassword" class="btn bg-default text-white w-100">Parolni o'zgartirish</a>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</section>

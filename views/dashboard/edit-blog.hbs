@@ -1,0 +1,42 @@
+<div class="content-wrapper overflow-auto">
+    {{>dashboard/content-header}}
+    
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    {{#if error}}
+                    <div class="alert alert-danger my-3">{{error}}</div>
+                    {{/if}}
+                    <form action="/dashboard/blog/edit/{{blog._id}}" method="post" enctype="multipart/form-data">
+                        <label for="title" class="fw-normal text-secondary">Sarlavha</label>
+                        <input name="title" type="text" class="form-control mb-3" id="title" placeholder="Maqola sarlavhasi" value="{{#if sessionData}}{{sessionData.title}}{{else}}{{blog.title}}{{/if}}">
+                        
+                        <label for="image" class="fw-normal text-secondary">Rasm</label>
+                        <input name="image" type="file" class="form-control mb-3" id="image" placeholder="Rasmni yuklang">      
+                        
+                        <div class="form-check mb-3">
+                            <input checked class="form-check-input" type="checkbox" name="currentImage" id="currentImage">
+                            <label class="form-check-label fw-normal text-secondary" for="old_img">Eski rasmda qolsin</label>
+                        </div>                        
+
+                        <label for="description" class="fw-normal text-secondary">Tavsif</label>
+                        <textarea name="description" class="form-control" placeholder="Maqola tavsifini kiriting..." id="description" style="height: 200px">{{#if sessionData}}{{sessionData.description}}{{else}}{{blog.description}}{{/if}}</textarea>
+                        
+                        <button class="btn filled-button mt-4">Saqlash</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/39.0.0/classic/ckeditor.js"></script>
+
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

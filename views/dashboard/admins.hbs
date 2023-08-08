@@ -1,0 +1,58 @@
+<div class="content-wrapper overflow-auto">
+    {{>dashboard/content-header}}
+    
+    <section class="content">
+        <div class="container-fluid">
+            {{#if newToken}}
+                <label class="fw-normal text-danger" for="link">Ushbu havolani admin qilmoqchi bo'lgan foydalanuvchiga yuboring. Havola {{parseDate newToken.expired_date}} gacha amal qiladi</label>
+                <div class="input-group mb-5">
+                    <input value="{{confirmUrl}}{{newToken.token}}" id="copying-link" type="text" class="form-control" placeholder="Havola" aria-label="Havola" aria-describedby="button-addon2">
+                    <button onclick="copyClipboard()" class="btn btn-info text-white" type="button" id="button-addon2">Havolani nusxalash</button>
+                </div>
+            {{/if}}
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ism</th>
+                                <th>Login</th>
+                                <th>Email</th>
+                                <th>Super Admin</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#if users}}
+                               {{#each users}}
+                                <tr>
+                                    <td>{{this.id}}</td>
+                                    <td>{{this.full_name}}</td>
+                                    <td>{{this.username}}</td>
+                                    <td>{{this.email}}</td>
+                                    <td>{{#if this.super_admin}}Ha {{else}}Yo'q{{/if}}</td>
+                                </tr>
+                               {{/each}}
+                            {{/if}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    function copyClipboard() {
+        const copyText = document.getElementById("copying-link");
+
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+
+        alert('Havola nusxalandi')
+    }
+</script>

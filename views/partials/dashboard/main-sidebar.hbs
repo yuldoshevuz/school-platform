@@ -1,0 +1,53 @@
+<aside class="main-sidebar sidebar-dark-success elevation-4 position-fixed">
+	<a href="/dashboard" class="brand-link">
+		<span class="brand-text font-weight-light">Dashboard</span>
+	</a>
+	<div class="sidebar">
+		<div class="user-panel mt-3 pb-3 mb-3 d-flex">
+			<div class="info">
+				{{#if user}}
+				<a href="/dashboard" class="d-block">{{user.full_name}}</a>
+				{{else}}
+				<a href="/dashboard" class="d-block">Noma'lum foydalanuvchi</a>
+				{{/if}}
+			</div>
+		</div>
+		<nav class="mt-2">
+			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				<li class="nav-item">
+					<a href="/dashboard" class="nav-link {{#if isDashboardPage}}bg-default text-white{{/if}}">
+						<i class="nav-icon fas fa-home"></i>
+						<p>Asosiy</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/dashboard/messages" class="nav-link {{#if isMessagesPage}}bg-default text-white{{/if}}">
+						<i class="nav-icon fa-solid fa-envelope"></i>
+						<p>Xabarlar</p>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a href="/dashboard/blog" class="nav-link {{#if isBlogPage}}bg-default text-white{{/if}}">
+						<i class="nav-icon fa-solid fa-paperclip"></i>
+						<p>Maqolalar</p>
+					</a>
+				</li>
+				<li class="line bg-secondary my-2" style="height: 1px;"></li>
+				<li class="nav-item">
+					<a href="/dashboard/admins" class="nav-link {{#if isAdminsPage}}bg-primary text-white{{else}}text-primary{{/if}}">
+						<i class="nav-icon fa-solid fa-user"></i>
+						<p>Adminlar</p>
+					</a>
+				</li>
+				<li class="line bg-secondary my-2" style="height: 1px;"></li>
+				<li class="nav-item">
+					<a href="/dashboard/security" class="nav-link {{#if isSecurityPage}}bg-danger text-white{{else}}text-danger{{/if}}">
+						<i class="nav-icon fa-solid fa-lock"></i>
+						<p>Xavfsizlik</p>
+					</a>
+				</li>
+				<li class="line bg-secondary my-2" style="height: 1px;"></li>
+			</ul>
+		</nav>
+	</div>
+</aside>

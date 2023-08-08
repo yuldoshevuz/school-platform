@@ -1,0 +1,159 @@
+<div class="content-wrapper overflow-auto">
+    {{>dashboard/content-header}}
+    
+    <section class="content">
+        <div class="container-fluid mb-5">
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="text-default my-3 text-center">Profilingiz haqidagi ma'lumotlar</h4>
+                    {{#if user}}
+                        {{#if error}}
+                            <div class="alert alert-danger">{{error}}</div>
+                        {{/if}}
+
+                        {{#if sessionData.success}}
+                           <div class="alert alert-success">{{sessionData.success}}</div>
+                        {{/if}}
+                        <form id="form" action="/dashboard/security/updateProfile{{#if sessionData.confirmCode}}/email{{/if}}", method="post">
+                            <div class="row gy-3">
+                                <div class="col-12">
+                                    <label for="full_name" class="form-label fw-normal">Ismingiz</label>
+                                    <div class="input-group">
+                                        <input
+                                            name="full_name"
+                                            value="{{#if sessionData}}{{sessionData.full_name}}{{else}}{{user.full_name}}{{/if}}"
+                                            type="text"
+                                            class="form-control {{#if sessionData.errors.fullNameErr}}form-error{{/if}}"
+                                            id="full_name"
+                                            placeholder="Ism"
+                                            {{#unless sessionData.errors.fullNameErr}}disabled{{/unless}}
+                                        />
+                                        <button onclick="handleClick(full_name)" type="button" class="btn bg-default text-white">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="username" class="form-label fw-normal">Foydalanuvchi nomingiz</label>
+                                    <div class="input-group">
+                                        <input
+                                            name="username" 
+                                            value="{{#if sessionData}}{{sessionData.username}}{{else}}{{user.username}}{{/if}}" 
+                                            type="text"
+                                            class="form-control {{#if sessionData.errors.usernameErr}}form-error{{/if}}" 
+                                            id="username" 
+                                            placeholder="Login" 
+                                            {{#unless sessionData.errors.usernameErr}}disabled{{/unless}}
+                                        />
+                                        <button onclick="handleClick(username)" type="button" class="btn bg-default text-white">
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email" class="form-label fw-normal">Elektron pochta</label>
+                                    <div class="input-group">
+                                        <input 
+                                            name="{{#unless sessionData.confirmCode}}email{{/unless}}" 
+                                            value="{{#if sessionData}}{{sessionData.email}}{{else}}{{user.email}}{{/if}}" 
+                                            type="email" 
+                                            class="form-control {{#if sessionData.errors.emailErr}}form-error{{/if}}"
+                                            id="email" 
+                                            placeholder="Email" 
+                                            {{#unless sessionData.errors.emailErr}}disabled{{/unless}}
+                                        />
+                                        <button
+                                            onclick="handleClick(email)"
+                                            type="button"
+                                            class="btn bg-default text-white"
+                                            {{#if sessionData.confirmCode}}disabled{{/if}}>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                {{#if sessionData.confirmCode}}
+                                <div class="col-12">
+                                    <label for="email" class="form-label fw-normal">Tasdiqlash kodi</label>
+                                    <div class="input-group">
+                                        <input 
+                                            name="code"
+                                            value="" 
+                                            type="number" 
+                                            class="form-control {{#if sessionData.codeErr}}form-error{{/if}}"
+                                            id="code" 
+                                            placeholder="Kod"
+                                        />
+                                        <button onclick="handleClick(full_name, username, email)" type="submit" class="btn bg-default text-white">
+                                            Tasdiqlash
+                                        </button>            
+                                    </div>
+                                    <small class="text-secondary">{{sessionData.email}} email manzilingizga tasdiqlash kodi yuborildi</small>
+                                </div>
+                                {{/if}}
+
+                                <div class="col-12">
+                                    <label for="super_admin" class="form-label fw-normal">Super admin</label>
+                                    <div class="input-group">
+                                        <input 
+                                            value="{{#if user.super_admin}}Ha{{else}}Yo'q{{/if}}" 
+                                            type="text" 
+                                            class="form-control" 
+                                            id="super_admin" 
+                                            placeholder="Super admin" 
+                                            disabled
+                                        />
+                                        <button type="button" class="btn bg-default text-white" disabled>
+                                            <i class="fa-solid fa-pen"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    {{#if sessionData.confirmCode}}
+                                    <a
+                                        href="/dashboard/security/updateProfile/cancel"
+                                        class="btn filled-button">
+                                        Bekor qilish
+                                    </a>
+                                    {{/if}}
+                                    {{#if sessionData.errors}}
+                                       <a
+                                            href="/dashboard/security/updateProfile/cancel"
+                                            class="btn filled-button">
+                                            Bekor qilish
+                                        </a>
+                                    {{/if}}
+                                    <button type="submit"
+                                        id="submitBtn"
+                                        class="btn filled-button fs-6"
+                                        onclick="handleClick(full_name, username, email)"
+                                        {{#if sessionData.confirmCode}}disabled{{/if}}>
+                                            Saqlash
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    const handleClick = ((...input) => {
+
+        if (input.length > 1) {
+            input.forEach(el => {
+                el.removeAttribute('disabled')
+            })
+            return
+        }
+
+        input.forEach(el => {
+            el.toggleAttribute('disabled')
+            el.classList.toggle('form-focus')
+        })
+
+    })
+</script>
