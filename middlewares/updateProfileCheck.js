@@ -41,7 +41,7 @@ const updateValidate = async (req, res, next) => {
         return
     }
 
-    if (existUsername) {
+    if (existUsername && username !== user.username) {
         req.session.error = "Bunday loginga ega foydalanuvchi mavjud. Iltimos boshqa login kiriting"
         req.session.sessionData.errors.usernameErr = true
         next()
