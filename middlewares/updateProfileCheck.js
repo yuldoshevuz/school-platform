@@ -30,11 +30,27 @@ const updateValidate = async (req, res, next) => {
         return
     }
 
-    const existUser = await User.findOne({ username })
+    const usernameRegex = /^[a-z0-9_\.]+$/.exec(username)
+    const existUsername = await User.findOne({ username })
+    const existEmail = await User.findOne({ email })
 
-    if (existUser) {
+    if (!usernameRegex) {
+        req.session.error = "Foydalanuvchi nomi kichik harflar, raqamlar, nuqta va pastki chiziqchadan iborat bo'lishi kerak"
+        req.session.sessionData.errors.usernameErr = true
+        next()
+        return
+    }
+
+    if (existUsername) {
         req.session.error = "Bunday loginga ega foydalanuvchi mavjud. Iltimos boshqa login kiriting"
         req.session.sessionData.errors.usernameErr = true
+        next()
+        return
+    }
+
+    if (existEmail && email !== user.email) {
+        req.session.error = "Kechirasiz, ushbu elektron pochta manzili band"
+        req.session.sessionData.errors.emailErr = true
         next()
         return
     }

@@ -11,7 +11,15 @@ const login = async (req, res, next) => {
             next()
             return
         }
+        const usernameRegex = /^[a-z0-9_\.]+$/.exec(username)
         const existUser = await User.findOne({ username: username.trim() })
+
+        if (!usernameRegex) {
+            req.session.error = "Foydalanuvchi nomi kichik harflar, raqamlar, nuqta va pastki chiziqchadan iborat bo'lishi kerak"
+            next()
+            return
+        }
+        
         if (!existUser) {
             req.session.error = `Ushbu foydalanuvchi topilmadi`
             next()
@@ -46,6 +54,14 @@ const register = async (req, res, next) => {
     
         if (existUser) {
             req.session.error = 'Bunday loginga ega foydalanuvchi mavjud. Iltimos boshqa login kiriting'
+            res.redirect('/auth/register/new')
+            return
+        }
+
+        const usernameRegex = /^[a-z0-9_\.]+$/.exec(username)
+
+        if (!usernameRegex) {
+            req.session.error = "Foydalanuvchi nomi kichik harflar, raqamlar va pastki chiziqchadan iborat bo'lishi kerak"
             res.redirect('/auth/register/new')
             return
         }

@@ -60,15 +60,6 @@ const updateProfileData = async (req, res) => {
             return
         }
 
-        const existUser = await User.findOne({ email: req.session.sessionData.email })
-
-        if (existUser) {
-            req.session.error = "Kechirasiz, ushbu elektron pochta manzili band"
-            req.session.sessionData.errors.emailErr = true
-            res.redirect('/dashboard/security')
-            return
-        }
-
         if (req.session.sessionData.email !== req.session.user.email) {
             req.session.sessionData.confirmCode = randomCodeGenerate()
             res.redirect('/dashboard/security')

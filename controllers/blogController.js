@@ -1,7 +1,3 @@
-const path = require('path')
-const fs = require('fs')
-const { v4 } = require('uuid')
-
 const parseDate = require('../views/helpers/parseDate')
 const userName = require('../views/helpers/userName')
 
@@ -58,7 +54,7 @@ const getAddBlogPage = (req, res) => {
         user: req.session.user,
         isBlogPage: true,
         error: req.session.error,
-        errorData: req.session.data || ''
+        sessionData: req.session.data || ''
     })
 
     delete req.session.error
@@ -103,7 +99,7 @@ const getEditBlogPage = async (req, res) => {
         isBlogPage: true,
         blog,
         error: req.session.error,
-        errorData: req.session.data
+        sessionData: req.session.data
     })
 
     delete req.session.error
