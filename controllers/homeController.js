@@ -18,9 +18,6 @@ const getHomePage = async (req, res) => {
         title: 'Bosh sahifa',
         news: lastNews,
         testimonials,
-        error: req.session.error,
-        success: req.session.success,
-        sessionData: req.session.sessionData || '',
         helpers: {
             userName,
             parseDate,
@@ -41,11 +38,11 @@ const getHomePage = async (req, res) => {
 const sendNewMessageToAdmin = async (req, res) => {
     const { name, email, subject, message } = req.body
 
-    req.session.sessionData = req.body
-
-    if (!name || !email || ! subject || !message) {
-        req.session.error = "Iltimos barcha maydonlarni to'ldiring"
-        res.redirect('/')
+    if (!name || !email || !subject || !message) {
+        res.status(400).json({
+            ok: false,
+            message: "Iltimos barcha maydonlarni to'ldiring"
+        })
         return
     }
 
@@ -56,8 +53,10 @@ const sendNewMessageToAdmin = async (req, res) => {
         message: message.trim(),
         date: Date.now() / 1000
     })
-    req.session.success = "Xabaringiz adminstratorga muvaffaqiyatli yuborildi"
-    res.redirect('/')
+    res.status(200).json({
+        ok: true,
+        message: "Xabaringiz adminstratorga muvaffaqiyatli yetkazildi"
+    })
 }
 
 module.exports = { getHomePage, sendNewMessageToAdmin }

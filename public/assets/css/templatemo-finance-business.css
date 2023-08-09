@@ -17,6 +17,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+#resp-render > div {
+	transition: all ease 5s;
+}
+
 p {
 	margin-bottom: 0px;
 	color: #666666;

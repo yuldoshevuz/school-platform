@@ -35,24 +35,39 @@
             <div class="col-md-4 footer-item last-item">
                 <h4 class="fs-4">Bizga Xabar qoldiring</h4>
                 <div class="contact-form">
-                    <form id="contact footer-contact" action="" method="post">
+                    <form id="footer-contact">
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="name" type="text" class="form-control  fs-6" id="name"
-                                        placeholder="Ismingiz" required="">
+                                    <input
+                                        name="name"
+                                        type="text"
+                                        class="form-control  fs-6"
+                                        id="nameFr"
+                                        placeholder="Ismingiz"
+                                    />
                                 </fieldset>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <fieldset>
-                                    <input name="email" type="text" class="form-control  fs-6" id="email"
-                                        pattern="[^ @]*@[^ @]*" placeholder="Elektron pochta" required="">
+                                    <input
+                                        name="email"
+                                        type="text"
+                                        class="form-control  fs-6"
+                                        id="emailFr"
+                                        pattern="[^ @]*@[^ @]*"
+                                        placeholder="Elektron pochta"
+                                    />
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>
-                                    <textarea name="message" rows="6" class="form-control fs-6" id="message"
-                                        placeholder="Xabaringiz" required=""></textarea>
+                                    <textarea
+                                        name="message"
+                                        rows="6"
+                                        class="form-control fs-6"
+                                        id="messageFr"
+                                        placeholder="Xabaringiz"></textarea>
                                 </fieldset>
                             </div>
                             <div class="col-lg-12">
@@ -67,3 +82,31 @@
         </div>
     </div>
 </footer>
+
+<script type="module">
+    import sendMessage from '/assets/js/sendMessage.js'
+
+    const footerContactForm = document.getElementById('footer-contact')
+
+    footerContactForm.addEventListener('submit', async (e) => {
+        e.preventDefault()
+        
+        const nameFr = document.getElementById('nameFr').value
+        const emailFr = document.getElementById('emailFr').value
+        const messageFr = document.getElementById('messageFr').value
+
+        const send = await sendMessage('/sendMessage', {
+            name: nameFr,
+            email: emailFr,
+            subject: "Kiritilmagan",
+            message: messageFr
+        })
+        const resp = await send.json()
+        if (resp.ok) {
+            alert(resp.message)
+            footerContactForm.reset()
+            return
+        }
+        alert(resp.message)
+    })
+</script>
