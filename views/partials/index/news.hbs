@@ -14,10 +14,12 @@
                 </ul>
             </div>
             <div class="col-md-8">
-                <section class='tabs-content'>
+                <section class='tabs-content w-100'>
                     {{#each news}}
                     <article id='tabs-{{this._id}}'>
-                        <img src="{{this.image_url}}" alt="{{this.title}}">
+                        <div class="news-image-container">
+                            <img src="{{this.image_url}}" alt="{{this.title}}">
+                        </div>
                         <p class="fs-6 my-3"> <i class="fa-solid fa-calendar-days"></i>{{parseDate this.date}}</p>
                         <h2 class="mb-3">{{this.title}}</h2>
                         

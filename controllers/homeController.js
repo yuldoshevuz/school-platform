@@ -21,9 +21,15 @@ const getHomePage = async (req, res) => {
         helpers: {
             userName,
             parseDate,
+            shortArticleTitle(title) {
+                if (title.length > 40) {
+                    return `${title.slice(0, 40)}...`
+                }
+                return title
+            },
             shortArticle(description) {
-                if (description.length > 137) {
-                    return `${description.slice(0, 137)}...`
+                if (description.length > 120) {
+                    return `${description.slice(0, 120)}...`
                 }
                 return description
             }

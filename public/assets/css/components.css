@@ -1,6 +1,7 @@
 /* Set root variables */
 :root {
 	--default: #a4c639;
+	/* --default: #f1c40f; */
 	--default-dark: rgb(41, 137, 16);
 }
 ::-webkit-scrollbar {
@@ -35,6 +36,78 @@
 	color: var(--default-dark)!important;
 }
 /* colors */
+
+/* News and blog card responsive image */
+.news-image-container {
+	width: 100%;
+	height: 400px;
+	position: relative;
+	overflow: hidden;
+}
+.news-image-container > img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.blog-card {
+	height: 465px;
+}
+.img-container {
+	width: 100%;
+	height: 200px;
+	position: relative;
+	overflow: hidden;
+}
+.img-container > img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+@media (max-width: 1199px) {
+	.blog-card {
+		height: 490px;
+	}
+}
+@media (max-width: 991.98px) {
+	.news-image-container  {
+		height: 300px;
+	}
+	.blog-card {
+		height: 460px;
+	}
+}
+@media (max-width: 767.98px) {
+	.blog-card {
+		height: 520px;
+	}
+	.img-container {
+		height: 300px;
+	}
+}
+@media (max-width: 575.98px) {
+	/* .blog-card {
+		height: px;
+	} */
+	.img-container {
+		height: 300px;
+	}
+}
+@media (max-width: 450px) {
+	.news-image-container  {
+		height: 260px;
+	}
+	.blog-card {
+		height: 490px;
+	}
+	.img-container {
+		height: 200px;
+	}
+}
+/* /News and blog card responsive image */
 
 /* Button components */
 a.filled-button,

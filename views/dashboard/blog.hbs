@@ -8,16 +8,18 @@
                 {{#each news}}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
-                        <div class="card-body">
-                            <img class="img-fluid" src="{{this.image_url}}" alt="{{this.title}}">
+                        <div class="card-body blog-card">
+                            <div class="img-container">
+                                <img class="img-fluid" src="{{this.image_url}}" alt="{{this.title}}">
+                            </div>
                             <div class="down-content">
                                 <p class="fs-6 mt-3 text-secondary"><i class="fa-solid fa-calendar-days"></i> {{parseDate this.date}}</p>
-                                <h4 class="my-3">{{this.title}}</h4>
+                                <h4 class="my-3">{{shortArticleTitle this.title}}</h4>
                                 <p class="text-style fst-italic text-secondary">{{shortArticle this.description }}</p>
                             </div>
                         </div>
                         <div class="card-footer py-3">
-                            <form action="/dashboard/blog/delete/{{this._id}}" method="post">
+                            <form action="/dashboard/blog/delete/{{this._id}}" class="m-0" method="post">
                                 <div class="btn-group btn-group-sm" role="group">
                                     <a href="/dashboard/blog/view/{{this._id}}" class="btn btn-outline-secondary">Ko'proq o'qish</a>
                                     <a href="/dashboard/blog/edit/{{this._id}}" class="btn btn-outline-success">Tahrirlash</a>
