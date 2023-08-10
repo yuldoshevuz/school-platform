@@ -2,8 +2,8 @@
 :root {
 	/* --default: #a4c639; */
 	/* --default: #cc8e35; */
-	--default: #fed330; 
-	/* --default: #009432;  ** */
+	/* --default: #fed330;  */
+	--default: #009432;
 	/* --default: #4cd137; */
 	/* --default: #f1c40f; */
 	/* --default-dark: rgb(41, 137, 16); */
@@ -17,8 +17,8 @@
 }
 .form-control:focus,
 .form-focus {
-	border-color: var(--default);
-	box-shadow: 0 0 0 0.25rem #ffc9086b;
+	border-color: #00943192;
+	box-shadow: 0 0 0 0.25rem #00d54776;
 }
 .form-error {
 	border-color: rgb(255, 36, 36);
