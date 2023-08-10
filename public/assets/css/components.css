@@ -1,8 +1,12 @@
 /* Set root variables */
 :root {
-	--default: #a4c639;
+	/* --default: #a4c639; */
+	/* --default: #cc8e35; */
+	--default: #fed330; 
+	/* --default: #009432;  ** */
+	/* --default: #4cd137; */
 	/* --default: #f1c40f; */
-	--default-dark: rgb(41, 137, 16);
+	/* --default-dark: rgb(41, 137, 16); */
 }
 ::-webkit-scrollbar {
     display: none;
@@ -14,7 +18,7 @@
 .form-control:focus,
 .form-focus {
 	border-color: var(--default);
-	box-shadow: 0 0 0 0.25rem #bdf60368;
+	box-shadow: 0 0 0 0.25rem #ffc9086b;
 }
 .form-error {
 	border-color: rgb(255, 36, 36);
@@ -65,6 +69,11 @@
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	transition: all ease 0.2s;
+}
+
+.blog-card:hover img {
+	transform: scale(110%);
 }
 
 @media (max-width: 1199px) {

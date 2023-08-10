@@ -627,7 +627,12 @@ ul.slick-dots {
 	margin-top: 140px;
 }
 
-.more-info .left-image img {
+.left-image {
+	height: 490px;
+	overflow: hidden;
+}
+
+.left-image img {
 	width: 100%;
 	overflow: hidden;
 }
@@ -673,6 +678,11 @@ ul.slick-dots {
 	margin-bottom: 30px;
 }
 
+@media (max-width: 1199px) {
+	.left-image {
+		height: 420px;
+	}
+}
 
 /* Testimonials Style */
 
