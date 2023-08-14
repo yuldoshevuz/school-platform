@@ -100,7 +100,7 @@
 
         if (resp.ok) {
             respRenderCb.innerHTML = `<div class="alert alert-success">${resp.message}</div>`
-            form.reset()
+            formCb.reset()
         } else {
             respRenderCb.innerHTML = `<div class="alert alert-danger">${resp.message}</div>`
         }

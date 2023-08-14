@@ -1,12 +1,12 @@
 <div class="single-news-blog">
     <div class="container">
         {{#if news}}
-        <div class="row flex-column-reverse flex-md-row" id="tabs">
+        <div class="row flex-column-reverse flex-md-row" id="blog">
             <div class="col-md-4 mt-5 mt-md-0">
                 <ul>
                     {{#each news}}
                     <li>
-                        <a href='#tabs-{{this._id}}'>{{this.title}}
+                        <a href='#blog-{{this._id}}'>{{this.title}}
                             <i class="fa fa-angle-right"></i>
                         </a>
                     </li>
@@ -16,7 +16,7 @@
             <div class="col-md-8">
                 <section class='tabs-content w-100'>
                     {{#each news}}
-                    <article id='tabs-{{this._id}}'>
+                    <article id='blog-{{this._id}}'>
                         <div class="news-image-container">
                             <img src="{{this.image_url}}" alt="{{this.title}}">
                         </div>
@@ -24,7 +24,8 @@
                         <h2 class="mb-3 fw-bold text-default">{{this.title}}</h2>
                         
                         <p class="text-style fst-italic">{{this.description}}</p>
-                        <p class="fs-5 mt-3 text-success">Yozdi: {{userName this.user_id}}</p>
+                        <hr>
+                        <p class="fs-5 text-end fw-bold mt-3">{{this.author.full_name}} <i class="fa-solid fa-pen-clip"></i></p>
                     </article>
                     {{/each}}
                 </section>

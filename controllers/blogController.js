@@ -33,7 +33,7 @@ const getBlogPage = async (req, res) => {
 
 const getBlogPageById = async (req, res) => {
     const id = req.params.id
-    const article = await News.findById(id).lean()
+    const article = await News.findById(id).populate('author').lean()
 
     if (!article) {
         res.redirect('/dashboard/blog')
@@ -85,7 +85,7 @@ const getAddBlog = async (req, res) => {
             image_url: '/uploads/' + req.file.filename,
             description,
             date: Date.now() / 1000,
-            user_id: req.session.user._id
+            author: req.session.user._id
         }
 
         await News.create(newArticle)
@@ -129,7 +129,7 @@ const getEditBlog = async (req, res) => {
             image_url: '',
             description: req.body.description,
             date: currentArticle.date,
-            user_id: currentArticle.user_id
+            author: currentArticle.author
         }
 
         if (req.body.currentImage) {

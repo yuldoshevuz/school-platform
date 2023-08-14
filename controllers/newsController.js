@@ -4,7 +4,7 @@ const userName = require('../views/helpers/userName')
 const News = require('../models/articleModel')
 
 const getNewsPage = async (req, res) => {
-    const news = await News.find().lean()
+    const news = await News.find().populate('author').lean()
     res.render('index/news', {
         isNews: true,
         title: 'Yangiliklar',

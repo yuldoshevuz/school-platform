@@ -373,15 +373,15 @@ header .navbar {
 	height: 100vh;
 }
 .Modern-Slider .item-1 .img-fill {
-	background-image: url(../images/home-bg.jpg);
+	background-image: url(../images/slide_1.jpg);
 }
 
 .Modern-Slider .item-2 .img-fill {
-	background-image: url(../images/home-bg-2.jpg);
+	background-image: url(../images/slide_2.jpg);
 }
 
 .Modern-Slider .item-3 .img-fill {
-	background-image: url(../images/home-bg-3.jpg);
+	background-image: url(../images/slide_3.jpg);
 }
 
 .Modern-Slider .NextArrow{
@@ -1037,19 +1037,19 @@ footer .contact-form button.filled-button:hover {
 	margin-top: 140px;
 }
 
-#tabs ul {
+#blog ul {
   margin: 0;
   padding: 0;
 }
-#tabs ul li {
+#blog ul li {
   margin-bottom: 10px;
   display: inline-block;
   width: 100%;
 }
-#tabs ul li:last-child {
+#blog ul li:last-child {
   margin-bottom: 0px;
 }
-#tabs ul li a {
+#blog ul li a {
 	text-transform: capitalize;
 	width: 100%;
 	padding: 30px 30px;
@@ -1061,20 +1061,20 @@ footer .contact-form button.filled-button:hover {
   	font-weight: 700;
   	transition: all 0.3s;
 }
-#tabs ul li a i {
+#blog ul li a i {
 	float: right;
 	margin-top: 5px;
 }
-#tabs ul .ui-tabs-active span {
+#blog ul .ui-tabs-active span {
   background: #faf5b2;
   border: #faf5b2;
   line-height: 90px;
   border-bottom: none;
 }
-#tabs ul .ui-tabs-active a {
+#blog ul .ui-tabs-active a {
   color: #fff;
 }
-#tabs ul .ui-tabs-active span {
+#blog ul .ui-tabs-active span {
   color: #1e1e1e;
 }
 .tabs-content {

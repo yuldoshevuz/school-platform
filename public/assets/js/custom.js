@@ -4,9 +4,9 @@ jQuery( document ).ready(function( $ ) {
 	"use strict";
 
 
-        if ($( "#tabs" )) {
+        if ($( "#blog" )) {
             $(function() {
-                $( "#tabs" ).tabs();
+                $( "#blog" ).tabs();
             });
         }
     
