@@ -1,5 +1,7 @@
 const path = require('path')
 const fs = require('fs/promises')
+const sharp = require('sharp')
+
 const parseDate = require('../views/helpers/parseDate')
 
 const News = require('../models/articleModel')
@@ -79,6 +81,15 @@ const getAddBlog = async (req, res) => {
 
         const { title, description } = req.body
 
+        await sharp(req.file.path)
+        .resize(1024, 576)
+        .jpeg({ quality: 80 })
+        .toFile(
+            path.resolve(__dirname, '../', 'public', 'uploads', req.file.filename)
+        )
+
+        await fs.rm(path.join(req.file.destination, req.file.filename))
+
         const newArticle = {
             title,
             image_url: '/uploads/' + req.file.filename,
@@ -136,7 +147,17 @@ const getEditBlog = async (req, res) => {
         }
 
         if (req.file) {
-            fs.rm(path.join(__dirname, '../', 'public', currentArticle.image_url))
+            await fs.rm(path.join(__dirname, '../', 'public', currentArticle.image_url))
+
+            await sharp(req.file.path)
+            .resize(1024, 576)
+            .jpeg({ quality: 80 })
+            .toFile(
+                path.resolve(__dirname, '../', 'public', 'uploads', req.file.filename)
+            )
+    
+            await fs.rm(path.join(req.file.destination, req.file.filename))
+
             newArticle.image_url = '/uploads/' + req.file.filename
         }
         
