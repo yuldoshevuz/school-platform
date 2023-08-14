@@ -1,5 +1,6 @@
+const path = require('path')
+const fs = require('fs/promises')
 const parseDate = require('../views/helpers/parseDate')
-const userName = require('../views/helpers/userName')
 
 const News = require('../models/articleModel')
 
@@ -13,7 +14,6 @@ const getBlogPage = async (req, res) => {
         isBlogPage: true,
         news: [...news].reverse(),
         helpers: {
-            userName,
             parseDate,
             shortArticleTitle(title) {
                 if (title.length > 40) {
@@ -47,7 +47,6 @@ const getBlogPageById = async (req, res) => {
         isBlogPage: true,
         article,
         helpers: {
-            userName,
             parseDate
         }
     })
@@ -137,6 +136,7 @@ const getEditBlog = async (req, res) => {
         }
 
         if (req.file) {
+            fs.rm(path.join(__dirname, '../', 'public', currentArticle.image_url))
             newArticle.image_url = '/uploads/' + req.file.filename
         }
         
@@ -151,7 +151,10 @@ const getEditBlog = async (req, res) => {
 const getDeleteBlog = async (req, res) => {
     try {
         const id = req.params.id
+        const blog = await News.findById(id)
+
         await News.findByIdAndRemove(id)
+        await fs.rm(path.join(__dirname, '../', 'public', blog.image_url))
         res.redirect('/dashboard/blog')
     } catch (error) {
         console.log(error);
