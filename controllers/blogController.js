@@ -1,7 +1,6 @@
 const path = require('path')
 const fs = require('fs/promises')
 const sharp = require('sharp')
-const moment = require('moment')
 
 const parseDate = require('../views/helpers/parseDate')
 
@@ -95,7 +94,6 @@ const getAddBlog = async (req, res) => {
             title,
             image_url: '/uploads/' + req.file.filename,
             description,
-            date: Date.now() / 1000,
             author: req.session.user._id
         }
 

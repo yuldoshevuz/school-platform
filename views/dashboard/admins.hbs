@@ -4,7 +4,7 @@
     <section class="content">
         <div class="container-fluid">
             {{#if newToken}}
-                <label class="fw-normal text-danger" for="link">Ushbu havolani admin qilmoqchi bo'lgan foydalanuvchiga yuboring. Havola {{parseDate newToken.expired_date}} gacha amal qiladi</label>
+                <label class="fw-normal text-danger" for="link">Ushbu havolani admin qilmoqchi bo'lgan foydalanuvchiga yuboring</label>
                 <div class="input-group mb-5">
                     <input value="{{confirmUrl}}{{newToken.token}}" id="copying-link" type="text" class="form-control" placeholder="Havola" aria-label="Havola" aria-describedby="button-addon2">
                     <button onclick="copyClipboard()" class="btn btn-info text-white" type="button" id="button-addon2">Havolani nusxalash</button>

@@ -56,8 +56,7 @@ const sendNewMessageToAdmin = async (req, res) => {
         name: name.trim(),
         email: email.trim(),
         subject: subject.trim(),
-        message: message.trim(),
-        date: Date.now() / 1000
+        message: message.trim()
     })
     res.status(200).json({
         ok: true,
