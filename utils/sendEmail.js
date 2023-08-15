@@ -1,31 +1,34 @@
+const nodemailer = require('nodemailer');
+
 function randomCodeGenerate() {
 	const maxm = 9999
 	const minm = 1000
 	return Math.floor(Math.random() * (maxm - minm + 1) + minm)
 }
 
-const sendMail = (to, subject, message) => {
+const authData = {
+	user: process.env.EMAIL,
+	pass: process.env.EMAIL_PASS
+}
+
+const sendMail = async (to, subject, message) => {
 	try {
-		const nodemailer = require('nodemailer');
 
 		const transporter = nodemailer.createTransport({
 			service: 'gmail',
-			auth: {
-				user: process.env.EMAIL,
-				pass: process.env.PASSWORD
-			}
+			auth: authData
 		});
 
 		const mailOptions = {
-			from: process.env.EMAIL,
+			from: authData.user,
 			to,
 			subject,
-			text: message
+			html: message
 		};
 
 		transporter.sendMail(mailOptions, (error, info) => {
 			if (error) {
-				throw error
+				console.log(error)
 			} else {
 				console.log('Email sent: ' + info.response);
 			}

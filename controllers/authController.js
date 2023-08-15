@@ -1,7 +1,7 @@
 const User = require('../models/userModel')
 const Token = require('../models/adminTokenModel')
 
-const { randomCodeGenerate } = require('../utils/sendEmail')
+const { sendMail, randomCodeGenerate } = require('../utils/sendEmail')
 
 const getLoginPage = (req, res) => {
     res.render('auth/login', {
@@ -130,6 +130,11 @@ const getRegister = async (req, res) => {
             email,
             code: randomCodeGenerate()
         }
+
+        await sendMail(req.session.authData.email,
+            "Email'ni tasdiqlash",
+            `<h1>Email tasdiqlash uchun kod: ${req.session.authData.code}`
+        )
         
         delete req.session.confirmToken
         req.session.successRegisterPage = true
@@ -147,8 +152,6 @@ const getRegisterConfirmPage = (req, res) => {
     if (req.session.successRegisterConfirm) {
         res.redirect('/auth/register/new')
     }
-
-    console.log(req.session.authData);
     
     res.render('auth/register-confirm-code', {
         title: "Email'ni tasdiqlash",

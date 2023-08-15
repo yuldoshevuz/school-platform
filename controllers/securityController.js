@@ -1,13 +1,9 @@
 const bcrypt = require('bcrypt')
-const { randomCodeGenerate } = require('../utils/sendEmail')
+const { sendMail, randomCodeGenerate } = require('../utils/sendEmail')
 
 const User = require('../models/userModel')
 
 const getSecurityPage = (req, res) => {
-
-    if (req.session.sessionData) {
-        console.log(req.session.sessionData.confirmCode);
-    }
     res.render('dashboard/security', {
         title: 'Xavfsizlik sozlamalari',
         layout: 'dashboard-layout',
@@ -62,6 +58,12 @@ const updateProfileData = async (req, res) => {
 
         if (req.session.sessionData.email !== req.session.user.email) {
             req.session.sessionData.confirmCode = randomCodeGenerate()
+
+            await sendMail(req.session.sessionData.email,
+                "Email'ni tasdiqlash",
+                `<h1>Email tasdiqlash uchun kod: ${req.session.sessionData.confirmCode}`
+            )
+
             res.redirect('/dashboard/security')
             return
         }
